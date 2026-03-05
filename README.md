@@ -142,7 +142,8 @@ RESTful API Design
 
 Client-Server Architectur
 
-ER- DIAGRAM:
+
+**ER- DIAGRAM:**
 **SkillWallet – ER Diagram**
 Core Concept
 
@@ -360,7 +361,7 @@ erDiagram
     USERS ||--o{ USER_BADGES : earns
     BADGES ||--o{ USER_BADGES : awarded_to
 
-Features – SB Stocks (Stock Trading Simulator)
+**Features – SB Stocks (Stock Trading Simulator)**
  1. User Authentication & Security
 
 Secure user registration and login system
@@ -618,4 +619,335 @@ Protected routes handled using React Router
 Role-based rendering for Admin/User
 
 
+**Roles and Responsibilities** 
+1. User (Trader)
 
+The User is the primary participant of the SB Stocks platform who performs trading activities and manages virtual portfolios.
+
+Responsibilities
+
+Register and create a personal account on the platform.
+
+Log in securely to access the trading dashboard.
+
+Create and manage multiple virtual stock portfolios.
+
+Buy and sell stocks using the trading simulation features.
+
+Track transaction history and monitor stock performance.
+
+Analyze portfolio growth using real-time and historical market data.
+
+Practice trading strategies in a risk-free environment.
+
+2. System (SB Stocks Platform)
+
+The System acts as the central platform that manages all operations, processes user requests, and ensures smooth functioning of the trading simulation.
+
+Responsibilities
+
+Provide real-time stock prices and historical market data.
+
+Ensure secure user registration, authentication, and session management.
+
+Record and manage all transactions linked to users and stocks.
+
+Update and maintain portfolio values based on stock price changes.
+
+Maintain data consistency and accuracy across the system.
+
+Process user requests efficiently and return appropriate responses.
+
+3. Admin
+
+The Admin is responsible for managing the platform, monitoring activities, and maintaining system integrity.
+
+Responsibilities
+
+Manage overall application performance and platform security.
+
+Monitor user activity and transactions to ensure fairness.
+
+Manage and update stock listings and market data sources.
+
+Handle technical issues, bugs, and system maintenance.
+
+Ensure accuracy of trading data and system operations.
+
+Maintain compliance with trading simulation standards and platform policies.
+
+
+**User Flow – SB Stocks Trading Application**
+
+The user flow describes how a user interacts with the SB Stocks platform from the moment they access the application until they log out. It illustrates the sequence of actions involved in authentication, stock exploration, trading, portfolio management, and strategy analysis.
+
+1️.Entry Point
+
+The user visits the SB Stocks web application through a browser.
+
+The system displays the Landing Page, which provides an overview of the platform and options to Register or Login.
+
+2️. User Authentication
+New User Registration
+
+User selects Register.
+
+Enters required details such as name, email, password, and contact information.
+
+The system validates the information and creates a new account.
+
+After successful registration, the user is redirected to the Login page.
+
+Existing User Login
+
+User selects Login.
+
+Enters email and password credentials.
+
+The system verifies the credentials and grants access to the Dashboard.
+
+3️. Dashboard (Main Hub)
+
+Once authenticated, the user is directed to the Dashboard, which serves as the main control panel.
+
+Dashboard Features
+
+View available virtual funds
+
+Monitor portfolio value and performance
+
+Access recent transactions and trading activity
+
+Available Options
+
+Browse Stocks
+
+Create Portfolio
+
+View Portfolio
+
+Trade Stocks
+
+4️. Browse & Explore Stocks
+
+Users can explore stocks listed on the platform.
+
+Features
+
+Search for US-listed stocks
+
+View real-time stock prices
+
+Analyze historical trends and performance charts
+
+Access company details and financial insights
+
+5️. Paper Trading (Buy / Sell)
+
+Users can simulate trading activities without real financial risk.
+
+Trading Process
+
+Select a stock from the listing
+
+Choose an action Buy or Sell
+
+Enter the quantity of shares
+
+Confirm the transaction
+
+System Response
+
+Transaction is recorded in the database
+
+Portfolio value updates in real time
+
+Trade history is logged for future analysis
+
+6️. Portfolio Management
+
+Users manage their investment portfolios within the platform.
+
+Portfolio Features
+
+Create multiple virtual portfolios
+
+Track individual stock holdings
+
+Monitor portfolio performance and growth
+
+Analyze profit and loss
+
+7️. Transaction History
+
+Users can review their trading activities.
+
+Features
+
+View complete buy/sell history
+
+Access timestamps and transaction details
+
+Track portfolio performance over time
+
+8️. Learning & Strategy Testing
+
+The platform allows users to improve their trading strategies.
+
+Features
+
+Analyze historical stock data
+
+Compare portfolio performance
+
+Test different investment strategies
+
+Evaluate risk and profitability
+
+9️. Logout
+
+The user selects Logout from the navigation menu.
+
+The system terminates the user session securely.
+
+The user is redirected to the Landing Page.
+
+
+**MVC Pattern for Stock Trading Application**
+
+The Stock Trading Application is designed using the Model–View–Controller (MVC) architectural pattern. This pattern separates the application into three interconnected components: Model, View, and Controller. This separation improves maintainability, scalability, and code organization.
+
+In the stock trading platform, the MVC architecture helps manage user requests, stock data processing, and user interface rendering efficiently.
+
+**1. Model Layer (Data Layer):**
+
+The Model layer handles all data-related operations in the stock trading application. It manages the structure of the database and defines how data is stored, retrieved, and updated.
+
+The models represent key entities such as users, stocks, portfolios, and transactions. These models interact directly with the database to perform CRUD operations (Create, Read, Update, Delete).
+
+Responsibilities of the Model Layer
+
+Define database schemas for Users, Stocks, Transactions, and Portfolios.
+
+Store and manage stock market data.
+
+Record buy and sell transactions.
+
+Maintain user portfolio details and balance.
+
+Communicate with the database to retrieve and update data.
+
+Example Models in Stock Trading App
+
+User Model – Stores user information such as name, email, password, and account details.
+
+Stock Model – Contains stock information such as stock name, symbol, and current price.
+
+Portfolio Model – Tracks stocks owned by a user.
+
+Transaction Model – Records buying and selling activities.
+
+The models can be implemented using Mongoose schemas with MongoDB to manage the application's data efficiently.
+
+**2. Controller Layer (Business Logic Layer):**
+
+The Controller layer acts as the intermediary between the View and the Model. It processes user requests, performs application logic, and interacts with models to retrieve or update data.
+
+When a user performs an action such as buying stocks, selling stocks, or viewing portfolio performance, the request is handled by the controller.
+
+Responsibilities of the Controller Layer
+
+Receive and process HTTP requests from the user.
+
+Validate input data such as stock quantity or user credentials.
+
+Call appropriate model functions to perform database operations.
+
+Implement trading logic such as calculating portfolio value.
+
+Send the processed response back to the user interface.
+
+Example Controllers
+
+User Controller – Handles user registration and login.
+
+Stock Controller – Fetches real-time stock prices.
+
+Portfolio Controller – Manages user portfolios.
+
+Transaction Controller – Processes buy and sell operations.
+
+Controllers ensure that the business logic of the trading system remains separate from the user interface and database logic.
+
+**3. View Layer (Routing / Presentation Layer):**
+
+The View layer is responsible for handling user interaction and displaying information. In a backend REST API architecture, the View is often implemented as the routing layer, which defines API endpoints.
+
+These routes determine how the application responds to different HTTP requests such as GET, POST, PUT, and DELETE.
+
+Responsibilities of the View Layer
+
+Define API endpoints for user interactions.
+
+Receive HTTP requests from the client application.
+
+Call the appropriate controller functions.
+
+Return responses such as stock data, portfolio details, or transaction status.
+
+**Example Routes**
+
+/register – User account creation
+
+/login – User authentication
+
+/stocks – Fetch available stocks
+
+/buy-stock – Buy stocks
+
+/sell-stock – Sell stocks
+
+/portfolio – View portfolio details
+
+The View layer ensures that the user interface communicates properly with the backend logic.
+
+**Working Flow of MVC in the Stock Trading App**
+
+The User sends a request from the application interface (e.g., buy a stock).
+
+The View (Route) receives the request.
+
+The request is forwarded to the Controller.
+
+The Controller processes the request and interacts with the Model.
+
+The Model communicates with the Database and returns the data.
+
+The Controller sends the response back to the View.
+
+The View displays the result to the User.
+
+**Advantages of MVC in the Stock Trading App**
+Separation of Concerns
+
+Each component handles a specific responsibility, making the system easier to manage.
+
+**Scalability:**
+
+New features such as advanced analytics, new trading strategies, or additional stock markets can be added easily.
+
+**Maintainability:**
+
+Developers can modify the UI, business logic, or database layer independently.
+
+**Reusability:**
+
+Controllers and models can be reused across different modules of the application.
+
+**Testing:**
+
+Each layer can be tested independently, improving system reliability.
+
+**Collaboration**
+
+Multiple developers can work simultaneously on different layers without conflicts

@@ -10,10 +10,6 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-require("./models/User");
-require("./models/Stock");
-require("./models/Transaction");
-require("./models/Order");
 const app = express();
 
 app.use(cors());

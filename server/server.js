@@ -1,6 +1,11 @@
 const connectDB = require("./config/db");
 connectDB();
 
+require("./models/User");
+require("./models/Stock");
+require("./models/Transaction");
+require("./models/Order");
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();

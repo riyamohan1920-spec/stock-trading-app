@@ -1,0 +1,15 @@
+# Root
+.DS_Store
+Thumbs.db
+*.log
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/package-lock.json
+
+# Frontend
+frontend/node_modules/
+frontend/.env
+frontend/dist/
+frontend/package-lock.json
